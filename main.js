@@ -76,9 +76,9 @@ function isLastMove() {
     return move == 8
 }
 
-function declareEndGame(turn, isDraw) {
+function declareEndGame(turn, isStalemate) {
     setTimeout(()=> {
-        if(isDraw) alert('Empate!')
+        if(isStalemate) alert('Empate!')
         else alert(`Han ganado las ${options[turn]}`)
         resetGame()
     }, 100)

@@ -15,14 +15,16 @@ squares.forEach((square) => {
     square.addEventListener("click",  () => {
 
         square.innerHTML = drawInSquare(turn)
-        let coords = square.id.split(",")
+
+        // The id of each div square is his coordinate on the boad
+        let [x, y] = square.id.split(",")
+
+        // Disable the click for preventing double click on a square
         square.style.pointerEvents = 'none'
 
+        board[x, y] = options[turn]
 
-        board[coords[0]][coords[1]] = options[turn]
-        console.log(board)
-        console.log(move)
-        console.log(turn)
+        console.log(true + 1)
 
         if (hasWinned()) {
             declareEndGame(turn, false)
@@ -31,6 +33,7 @@ squares.forEach((square) => {
 
         if (turn == 0) turn++
         else turn--
+        
         move++
     })
 })

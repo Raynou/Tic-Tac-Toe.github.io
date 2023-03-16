@@ -17,14 +17,12 @@ squares.forEach((square) => {
         square.innerHTML = drawInSquare(turn)
 
         // The id of each div square is his coordinate on the boad
-        let [x, y] = square.id.split(",")
+        let [row, col] = square.id.split(",")
 
         // Disable the click for preventing double click on a square
         square.style.pointerEvents = 'none'
 
-        board[x, y] = options[turn]
-
-        console.log(true + 1)
+        board[row][col] = options[turn]
 
         if (hasWinned()) {
             declareEndGame(turn, false)
@@ -45,21 +43,30 @@ function drawInSquare(turn){
 function hasWinned() {
     // Check rows
     for(let i = 0; i<3; i++) {
-
-        const firsRow = board[i][0]
-        const secondRow = board[i][1]
-        const thirRow = board[i][2]
         
-        if(areEquals(firsRow, secondRow, thirRow)){
+        console.log(board)
+
+        let firstRow = board[i][0]
+        let secondRow = board[i][1]
+        let thirRow = board[i][2]
+
+        console.log(`${firstRow}, ${secondRow}, ${thirRow}`);
+        
+        if(areEquals(firstRow, secondRow, thirRow)){
             return true
         }
     }
 
     // Check cols
     for(let i = 0; i<3; i++) {
-        const firstCol = board[0][i]
-        const secondCol = board[1][i]
-        const thirdCol = board[2][i]
+
+        console.log(board)
+
+        let firstCol = board[0][i]
+        let secondCol = board[1][i]
+        let thirdCol = board[2][i]
+
+        console.log(`${firstCol}, ${secondCol}, ${thirdCol}`)
         
         if(areEquals(firstCol, secondCol, thirdCol)){
             return true
@@ -110,7 +117,7 @@ function resetGame() {
 }
 
 function areEquals(a, b, c) {
-    return (a === b) && (a === c) && (b===c)
+    return a === b && a === c && b === c
 }
 
 

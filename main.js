@@ -2,8 +2,8 @@ const squares = document.querySelectorAll('.square')
 let turn = 0
 let move = 0
 
-// We need initialize the matrix board with different values for comprobe if a
-// column, row or diagonal is equial and determine a winner
+// We need initialize the matrix board with different values for comprobe if the
+// elements of a column, row or diagonal are equal and determine a winner.
 let board = [
     ["1","2","3"],
     ["4","5","6"],

@@ -1,13 +1,15 @@
 const squares = document.querySelectorAll('.square')
 let turn = 0
 let move = 0
+
+// We need initialize the matrix board with different values for comprobe if a
+// column, row or diagonal is equial and determine a winner
 let board = [
     ["1","2","3"],
     ["4","5","6"],
     ["7","8","9"]
 ]
 let options = ["X", "O"]
-
 
 squares.forEach((square) => {
     square.addEventListener("click",  () => {
@@ -40,34 +42,40 @@ function drawInSquare(turn){
 function hasWinned() {
     // Check rows
     for(let i = 0; i<3; i++) {
-        if(board[i][0] === board[i][1] &&
-           board[i][2] === board[i][0] &&
-           board[i][1] === board[i][2]){
+
+        const firsRow = board[i][0]
+        const secondRow = board[i][1]
+        const thirRow = board[i][2]
+        
+        if(areEquals(firsRow, secondRow, thirRow)){
             return true
         }
     }
 
     // Check cols
     for(let i = 0; i<3; i++) {
-        if(board[0][i] === board[1][i] &&
-           board[2][i] === board[0][i] &&
-           board[1][i] === board[2][i]){
+        const firstCol = board[0][i]
+        const secondCol = board[1][i]
+        const thirdCol = board[2][i]
+        
+        if(areEquals(firstCol, secondCol, thirdCol)){
             return true
         }
     }
 
     // Right diagonal
+    let firstCord = board[0][0]
+    let secondCord = board[1][1]
+    let thirdCord = board[2][2]
 
-    if(board[0][0] === board[1][1] && board[1][1] === board[2][2] && board[0][0] ===  board[2][2]){
-        return true
-    }
+    if(areEquals(firstCord, secondCord, thirdCord)) return true
 
     // Left diagonal
-
-    if(board[0][2] === board[1][1] && board[1][1] === board[2][0] && board[0][2] === board[2][0]){
-        return true
-    }
-
+    firstCord = board[0][2]
+    secondCord = board[1][1]
+    thirdCord = board[2][0]
+    
+    if(areEquals(firstCord, secondCord, thirdCord)) return true
 
     return false
 }
@@ -96,7 +104,10 @@ function resetGame() {
     ]
     move = 0
     turn = 0
-    console.clear()
+}
+
+function areEquals(a, b, c) {
+    return (a === b) && (a === c) && (b===c)
 }
 
 

@@ -52,7 +52,7 @@ function hasWinned() {
 
         console.log(`${firstRow}, ${secondRow}, ${thirRow}`);
         
-        if(areEquals(firstRow, secondRow, thirRow)){
+        if(isEqual(firstRow, secondRow, thirRow)){
             return true
         }
     }
@@ -68,7 +68,7 @@ function hasWinned() {
 
         console.log(`${firstCol}, ${secondCol}, ${thirdCol}`)
         
-        if(areEquals(firstCol, secondCol, thirdCol)){
+        if(isEqual(firstCol, secondCol, thirdCol)){
             return true
         }
     }
@@ -78,14 +78,14 @@ function hasWinned() {
     let secondCord = board[1][1]
     let thirdCord = board[2][2]
 
-    if(areEquals(firstCord, secondCord, thirdCord)) return true
+    if(isEqual(firstCord, secondCord, thirdCord)) return true
 
     // Left diagonal
     firstCord = board[0][2]
     secondCord = board[1][1]
     thirdCord = board[2][0]
     
-    if(areEquals(firstCord, secondCord, thirdCord)) return true
+    if(isEqual(firstCord, secondCord, thirdCord)) return true
 
     return false
 }
@@ -116,8 +116,8 @@ function resetGame() {
     turn = 0
 }
 
-function areEquals(a, b, c) {
-    return a === b && a === c && b === c
+function isEqual(a, b, c) {
+    return a === b && a === c
 }
 
 

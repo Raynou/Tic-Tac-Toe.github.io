@@ -1,9 +1,10 @@
 const squares = document.querySelectorAll('.square')
+const txtTurn = document.getElementById('txtTurn')
 let turn = 0
 let move = 0
 
-// We need initialize the matrix board with different values for comprobe if the
-// elements of a column, row or diagonal are equal and determine a winner.
+console.log(txtTurn.innerHTML);
+
 let board = [
     ["1","2","3"],
     ["4","5","6"],
@@ -33,6 +34,8 @@ squares.forEach((square) => {
         else turn--
         
         move++
+
+        txtTurn.innerText = "Turno de las " + options[turn]
     })
 })
 
@@ -98,6 +101,7 @@ function declareEndGame(turn, isStalemate) {
     setTimeout(()=> {
         if(isStalemate) alert('Empate!')
         else alert(`Han ganado las ${options[turn]}`)
+        txtTurn.innerText = "Turno de las X"
         resetGame()
     }, 100)
 }
@@ -119,8 +123,3 @@ function resetGame() {
 function areEquals(a, b, c) {
     return a === b && a === c
 }
-
-
-
-
-
